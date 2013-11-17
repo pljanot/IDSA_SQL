@@ -1,0 +1,30 @@
+DROP TABLE [dbo].[Company];
+
+CREATE TABLE [dbo].[Company] (
+    [Id]           FLOAT          NOT NULL,
+    [Column_B]     FLOAT          NULL,
+    [Name]         NVARCHAR (255) NOT NULL,
+    [Shortcut]     NVARCHAR (255) NOT NULL,
+    [ShareNumbers] FLOAT          NULL,
+    [SharePrice]   FLOAT	      NULL,
+    [Date]         DATETIME       NULL,
+    [Description]  NVARCHAR (500) NULL,
+    [Column_I]     NVARCHAR (255) NULL,
+    [Column_J]     FLOAT          NULL,
+    [Column_K]     FLOAT          NULL,
+    [Column_L]     FLOAT          NULL,
+    [Href]         NVARCHAR (255) NULL,
+    [PhoneNumber]  NVARCHAR (255) NULL,
+    [Email]        NVARCHAR (255) NULL,
+    [FullName]     NVARCHAR (255) NULL,
+    [HeadAccount]  NVARCHAR (255) NULL,
+    [Profile]      NVARCHAR (255) NULL,
+    [Address]      NVARCHAR (255) NULL,
+    [HrefStatus]   NVARCHAR (255) NULL,
+    [VoteNumbers]  FLOAT          NULL,
+    [Date2]        DATETIME       NULL,
+    [Column_W]     NVARCHAR (500) NULL,
+    [Column_X]     DATETIME       NULL,
+    [Volumen20]    FLOAT          NULL,
+    CONSTRAINT [PK_Company] PRIMARY KEY CLUSTERED ([Id] ASC)
+);
