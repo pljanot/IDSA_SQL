@@ -34,8 +34,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -53,6 +60,40 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DB.SQL.Files\Balance.cs">
+      <DependentUpon>Reports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB.SQL.Files\CashFlow.cs">
+      <DependentUpon>Reports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB.SQL.Files\IncomeStatment.cs">
+      <DependentUpon>Reports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB.SQL.Files\Reports.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reports.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB.SQL.Files\Reports.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB.SQL.Files\Reports.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reports.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DB.SQL.Files\ReportsGenerationModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportsGenerationModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB.SQL.Files\ReportsGenerationModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportsGenerationModel.tt</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -84,14 +125,49 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <EntityDeploy Include="DB.SQL.Files\Reports.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Reports.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DB.SQL.Files\Reports.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Reports.edmx</DependentUpon>
+      <LastGenOutput>Reports.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DB.SQL.Files\Reports.edmx.diagram">
+      <DependentUpon>Reports.edmx</DependentUpon>
+    </None>
+    <None Include="DB.SQL.Files\Reports.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Reports.edmx</DependentUpon>
+      <LastGenOutput>Reports.cs</LastGenOutput>
+    </None>
+    <None Include="DB.SQL.Files\ReportsGenerationModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ReportsGenerationModel.Context.cs</LastGenOutput>
+      <DependentUpon>Reports.edmx</DependentUpon>
+    </None>
+    <None Include="DB.SQL.Files\ReportsGenerationModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ReportsGenerationModel.cs</LastGenOutput>
+      <DependentUpon>Reports.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DB.SQL.Files\Reports.edmx.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
