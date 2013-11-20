@@ -5,152 +5,183 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Reports.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="ReportsStoreContainer">
-    <EntitySet Name="ReportsSet" EntityType="Reports.Store.ReportsSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="BalanceSet" EntityType="Reports.Store.BalanceSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="IncomeStatmentSet" EntityType="Reports.Store.IncomeStatmentSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CashFlowSet" EntityType="Reports.Store.CashFlowSet" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="ReportsBalance" Association="Reports.Store.ReportsBalance">
-      <End Role="Reports" EntitySet="ReportsSet" />
-      <End Role="Balance" EntitySet="BalanceSet" />
-    </AssociationSet>
-    <AssociationSet Name="ReportsIncomeStatment" Association="Reports.Store.ReportsIncomeStatment">
-      <End Role="Reports" EntitySet="ReportsSet" />
-      <End Role="IncomeStatment" EntitySet="IncomeStatmentSet" />
-    </AssociationSet>
-    <AssociationSet Name="ReportsCashFlow" Association="Reports.Store.ReportsCashFlow">
-      <End Role="Reports" EntitySet="ReportsSet" />
-      <End Role="CashFlow" EntitySet="CashFlowSet" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="ReportsSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Year" Type="int" Nullable="false" />
-    <Property Name="Quarter" Type="smallint" Nullable="false" />
-    <Property Name="FinancialStatmentDate" Type="datetime" Nullable="false" />
-    <Property Name="FinancialReportReleaseDate" Type="datetime" Nullable="false" />
-    <Property Name="Balance_Id_Id" Type="int" Nullable="false" />
-    <Property Name="IncomeStatment_Id_Id" Type="int" Nullable="false" />
-    <Property Name="CashFlow_Id_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="BalanceSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AssetsPrimary" Type="bigint" Nullable="false" />
-    <Property Name="LiabilitiesPrimary" Type="bigint" Nullable="false" />
-    <Property Name="FixedAssets" Type="bigint" Nullable="false" />
-    <Property Name="IntangibleAssets" Type="bigint" Nullable="false" />
-    <Property Name="TangibleFixedAssets" Type="bigint" Nullable="false" />
-    <Property Name="LongTermReceivablesFixA" Type="bigint" Nullable="false" />
-    <Property Name="LongTermInvestmentFixA" Type="bigint" Nullable="false" />
-    <Property Name="OtherFixedAssets" Type="bigint" Nullable="false" />
-    <Property Name="CurrentAssets" Type="bigint" Nullable="false" />
-    <Property Name="Inventory" Type="bigint" Nullable="false" />
-    <Property Name="LongTermReceivablesCurA" Type="bigint" Nullable="false" />
-    <Property Name="LongTermInvestmentCurA" Type="bigint" Nullable="false" />
-    <Property Name="Cash" Type="bigint" Nullable="false" />
-    <Property Name="OtherCurrentAssets" Type="bigint" Nullable="false" />
-    <Property Name="AssetsForSale" Type="bigint" Nullable="false" />
-    <Property Name="Equity" Type="bigint" Nullable="false" />
-    <Property Name="CapitalMasterFund" Type="bigint" Nullable="false" />
-    <Property Name="ShareOfTreasuryStock" Type="bigint" Nullable="false" />
-    <Property Name="CapitalReserveFund" Type="bigint" Nullable="false" />
-    <Property Name="NonControllingIntrests" Type="bigint" Nullable="false" />
-    <Property Name="SuppliesAndServicesLT" Type="bigint" Nullable="false" />
-    <Property Name="LoansAndAdvancesLT" Type="bigint" Nullable="false" />
-    <Property Name="OtherFinancialLT" Type="bigint" Nullable="false" />
-    <Property Name="OtherLT" Type="bigint" Nullable="false" />
-    <Property Name="ShortTermLiabilities" Type="bigint" Nullable="false" />
-    <Property Name="SuppliesAndServicesST" Type="bigint" Nullable="false" />
-    <Property Name="LoansAndAdvancesST" Type="bigint" Nullable="false" />
-    <Property Name="OtherFinancialST" Type="bigint" Nullable="false" />
-    <Property Name="OtherST" Type="bigint" Nullable="false" />
-  </EntityType>
-  <EntityType Name="IncomeStatmentSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Sales" Type="bigint" Nullable="false" />
-    <Property Name="OwnSaleCosts" Type="bigint" Nullable="false" />
-    <Property Name="SalesCost1" Type="bigint" Nullable="false" />
-    <Property Name="SalesCost2" Type="bigint" Nullable="false" />
-    <Property Name="EarningsOnSales" Type="bigint" Nullable="false" />
-    <Property Name="OtherOperationalActivity1" Type="bigint" Nullable="false" />
-    <Property Name="OtherOperationalActivity2" Type="bigint" Nullable="false" />
-    <Property Name="EBIT" Type="bigint" Nullable="false" />
-    <Property Name="FinancialActivity1" Type="bigint" Nullable="false" />
-    <Property Name="FinancialActivity2" Type="bigint" Nullable="false" />
-    <Property Name="OtherCostOrSales" Type="bigint" Nullable="false" />
-    <Property Name="SalesOnEconomicActivity" Type="bigint" Nullable="false" />
-    <Property Name="ExceptionalOccurence" Type="bigint" Nullable="false" />
-    <Property Name="EarningsBeforeTaxes" Type="bigint" Nullable="false" />
-    <Property Name="DiscountinuedOperations" Type="bigint" Nullable="false" />
-    <Property Name="NetParentProfit" Type="bigint" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CashFlowSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="OperatingActivitiesCF" Type="bigint" Nullable="false" />
-    <Property Name="Depreciation" Type="bigint" Nullable="false" />
-    <Property Name="ReceivablesChange" Type="bigint" Nullable="false" />
-    <Property Name="ObligationsStateChange" Type="bigint" Nullable="false" />
-    <Property Name="ReserveAndOtherChange" Type="bigint" Nullable="false" />
-    <Property Name="WorkingCapital" Type="bigint" Nullable="false" />
-    <Property Name="InvestmentCF" Type="bigint" Nullable="false" />
-    <Property Name="CapexIntangible" Type="bigint" Nullable="false" />
-    <Property Name="FinancialCF" Type="bigint" Nullable="false" />
-    <Property Name="SharesIssue" Type="bigint" Nullable="false" />
-    <Property Name="LoansAndAdvancesObtained" Type="bigint" Nullable="false" />
-    <Property Name="LoansAndAdvancesRepayed" Type="bigint" Nullable="false" />
-    <Property Name="LiabilitiesChange" Type="bigint" Nullable="false" />
-    <Property Name="Dividend" Type="bigint" Nullable="false" />
-    <Property Name="TotalCF" Type="bigint" Nullable="false" />
-  </EntityType>
-  <Association Name="ReportsBalance">
-    <End Role="Reports" Type="Reports.Store.ReportsSet" Multiplicity="*" />
-    <End Role="Balance" Type="Reports.Store.BalanceSet" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Balance">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Reports">
-        <PropertyRef Name="Balance_Id_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ReportsIncomeStatment">
-    <End Role="Reports" Type="Reports.Store.ReportsSet" Multiplicity="*" />
-    <End Role="IncomeStatment" Type="Reports.Store.IncomeStatmentSet" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="IncomeStatment">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Reports">
-        <PropertyRef Name="IncomeStatment_Id_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ReportsCashFlow">
-    <End Role="Reports" Type="Reports.Store.ReportsSet" Multiplicity="*" />
-    <End Role="CashFlow" Type="Reports.Store.CashFlowSet" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="CashFlow">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Reports">
-        <PropertyRef Name="CashFlow_Id_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+        <EntityContainer Name="ReportsStoreContainer">
+          <EntitySet Name="BalanceSet" EntityType="Reports.Store.BalanceSet" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CashFlowSet" EntityType="Reports.Store.CashFlowSet" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Company" EntityType="Reports.Store.Company" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="IncomeStatmentSet" EntityType="Reports.Store.IncomeStatmentSet" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ReportsSet" EntityType="Reports.Store.ReportsSet" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ReportsBalance" Association="Reports.Store.FK_ReportsBalance">
+            <End Role="BalanceSet" EntitySet="BalanceSet" />
+            <End Role="ReportsSet" EntitySet="ReportsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportsCashFlow" Association="Reports.Store.FK_ReportsCashFlow">
+            <End Role="CashFlowSet" EntitySet="CashFlowSet" />
+            <End Role="ReportsSet" EntitySet="ReportsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportsIncomeStatment" Association="Reports.Store.FK_ReportsIncomeStatment">
+            <End Role="IncomeStatmentSet" EntitySet="IncomeStatmentSet" />
+            <End Role="ReportsSet" EntitySet="ReportsSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BalanceSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AssetsPrimary" Type="bigint" Nullable="false" />
+          <Property Name="LiabilitiesPrimary" Type="bigint" Nullable="false" />
+          <Property Name="FixedAssets" Type="bigint" Nullable="false" />
+          <Property Name="IntangibleAssets" Type="bigint" Nullable="false" />
+          <Property Name="TangibleFixedAssets" Type="bigint" Nullable="false" />
+          <Property Name="LongTermReceivablesFixA" Type="bigint" Nullable="false" />
+          <Property Name="LongTermInvestmentFixA" Type="bigint" Nullable="false" />
+          <Property Name="OtherFixedAssets" Type="bigint" Nullable="false" />
+          <Property Name="CurrentAssets" Type="bigint" Nullable="false" />
+          <Property Name="Inventory" Type="bigint" Nullable="false" />
+          <Property Name="LongTermReceivablesCurA" Type="bigint" Nullable="false" />
+          <Property Name="LongTermInvestmentCurA" Type="bigint" Nullable="false" />
+          <Property Name="Cash" Type="bigint" Nullable="false" />
+          <Property Name="OtherCurrentAssets" Type="bigint" Nullable="false" />
+          <Property Name="AssetsForSale" Type="bigint" Nullable="false" />
+          <Property Name="Equity" Type="bigint" Nullable="false" />
+          <Property Name="CapitalMasterFund" Type="bigint" Nullable="false" />
+          <Property Name="ShareOfTreasuryStock" Type="bigint" Nullable="false" />
+          <Property Name="CapitalReserveFund" Type="bigint" Nullable="false" />
+          <Property Name="NonControllingIntrests" Type="bigint" Nullable="false" />
+          <Property Name="SuppliesAndServicesLT" Type="bigint" Nullable="false" />
+          <Property Name="LoansAndAdvancesLT" Type="bigint" Nullable="false" />
+          <Property Name="OtherFinancialLT" Type="bigint" Nullable="false" />
+          <Property Name="OtherLT" Type="bigint" Nullable="false" />
+          <Property Name="ShortTermLiabilities" Type="bigint" Nullable="false" />
+          <Property Name="SuppliesAndServicesST" Type="bigint" Nullable="false" />
+          <Property Name="LoansAndAdvancesST" Type="bigint" Nullable="false" />
+          <Property Name="OtherFinancialST" Type="bigint" Nullable="false" />
+          <Property Name="OtherST" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CashFlowSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OperatingActivitiesCF" Type="bigint" Nullable="false" />
+          <Property Name="Depreciation" Type="bigint" Nullable="false" />
+          <Property Name="ReceivablesChange" Type="bigint" Nullable="false" />
+          <Property Name="ObligationsStateChange" Type="bigint" Nullable="false" />
+          <Property Name="ReserveAndOtherChange" Type="bigint" Nullable="false" />
+          <Property Name="WorkingCapital" Type="bigint" Nullable="false" />
+          <Property Name="InvestmentCF" Type="bigint" Nullable="false" />
+          <Property Name="CapexIntangible" Type="bigint" Nullable="false" />
+          <Property Name="FinancialCF" Type="bigint" Nullable="false" />
+          <Property Name="SharesIssue" Type="bigint" Nullable="false" />
+          <Property Name="LoansAndAdvancesObtained" Type="bigint" Nullable="false" />
+          <Property Name="LoansAndAdvancesRepayed" Type="bigint" Nullable="false" />
+          <Property Name="LiabilitiesChange" Type="bigint" Nullable="false" />
+          <Property Name="Dividend" Type="bigint" Nullable="false" />
+          <Property Name="TotalCF" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="float" Nullable="false" />
+          <Property Name="Column_B" Type="float" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Shortcut" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="ShareNumbers" Type="float" />
+          <Property Name="SharePrice" Type="float" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Column_I" Type="nvarchar" MaxLength="255" />
+          <Property Name="Column_J" Type="float" />
+          <Property Name="Column_K" Type="float" />
+          <Property Name="Column_L" Type="float" />
+          <Property Name="Href" Type="nvarchar" MaxLength="255" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="255" />
+          <Property Name="HeadAccount" Type="nvarchar" MaxLength="255" />
+          <Property Name="Profile" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="HrefStatus" Type="nvarchar" MaxLength="255" />
+          <Property Name="VoteNumbers" Type="float" />
+          <Property Name="Date2" Type="datetime" />
+          <Property Name="Column_W" Type="nvarchar" MaxLength="500" />
+          <Property Name="Column_X" Type="datetime" />
+          <Property Name="Volumen20" Type="float" />
+        </EntityType>
+        <EntityType Name="IncomeStatmentSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Sales" Type="bigint" Nullable="false" />
+          <Property Name="OwnSaleCosts" Type="bigint" Nullable="false" />
+          <Property Name="SalesCost1" Type="bigint" Nullable="false" />
+          <Property Name="SalesCost2" Type="bigint" Nullable="false" />
+          <Property Name="EarningsOnSales" Type="bigint" Nullable="false" />
+          <Property Name="OtherOperationalActivity1" Type="bigint" Nullable="false" />
+          <Property Name="OtherOperationalActivity2" Type="bigint" Nullable="false" />
+          <Property Name="EBIT" Type="bigint" Nullable="false" />
+          <Property Name="FinancialActivity1" Type="bigint" Nullable="false" />
+          <Property Name="FinancialActivity2" Type="bigint" Nullable="false" />
+          <Property Name="OtherCostOrSales" Type="bigint" Nullable="false" />
+          <Property Name="SalesOnEconomicActivity" Type="bigint" Nullable="false" />
+          <Property Name="ExceptionalOccurence" Type="bigint" Nullable="false" />
+          <Property Name="EarningsBeforeTaxes" Type="bigint" Nullable="false" />
+          <Property Name="DiscountinuedOperations" Type="bigint" Nullable="false" />
+          <Property Name="NetParentProfit" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReportsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Quarter" Type="smallint" Nullable="false" />
+          <Property Name="FinancialStatmentDate" Type="datetime" Nullable="false" />
+          <Property Name="FinancialReportReleaseDate" Type="datetime" Nullable="false" />
+          <Property Name="Balance_Id_Id" Type="int" Nullable="false" />
+          <Property Name="IncomeStatment_Id_Id" Type="int" Nullable="false" />
+          <Property Name="CashFlow_Id_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ReportsBalance">
+          <End Role="BalanceSet" Type="Reports.Store.BalanceSet" Multiplicity="1" />
+          <End Role="ReportsSet" Type="Reports.Store.ReportsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BalanceSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportsSet">
+              <PropertyRef Name="Balance_Id_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportsCashFlow">
+          <End Role="CashFlowSet" Type="Reports.Store.CashFlowSet" Multiplicity="1" />
+          <End Role="ReportsSet" Type="Reports.Store.ReportsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CashFlowSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportsSet">
+              <PropertyRef Name="CashFlow_Id_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportsIncomeStatment">
+          <End Role="IncomeStatmentSet" Type="Reports.Store.IncomeStatmentSet" Multiplicity="1" />
+          <End Role="ReportsSet" Type="Reports.Store.ReportsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IncomeStatmentSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportsSet">
+              <PropertyRef Name="IncomeStatment_Id_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Reports" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
@@ -171,6 +202,11 @@
             <End Role="Reports" EntitySet="ReportsSet" />
             <End Role="CashFlow" EntitySet="CashFlowSet" />
           </AssociationSet>
+          <EntitySet Name="Company" EntityType="Reports.Company" />
+          <AssociationSet Name="ReportsCompany" Association="Reports.ReportsCompany">
+            <End Role="Reports" EntitySet="ReportsSet" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Reports">
           <Key>
@@ -179,11 +215,12 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="Year" Nullable="false" />
           <Property Type="Int16" Name="Quarter" Nullable="false" annotation:StoreGeneratedPattern="None" />
-          <Property Type="DateTime" Name="FinancialStatmentDate" Nullable="false" />
-          <Property Type="DateTime" Name="FinancialReportReleaseDate" Nullable="false" />
+          <Property Type="DateTime" Name="FinancialStatmentDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="FinancialReportReleaseDate" Nullable="false" Precision="3" />
           <NavigationProperty Name="Balance_Id" Relationship="Reports.ReportsBalance" FromRole="Reports" ToRole="Balance" />
           <NavigationProperty Name="IncomeStatment_Id" Relationship="Reports.ReportsIncomeStatment" FromRole="Reports" ToRole="IncomeStatment" />
           <NavigationProperty Name="CashFlow_Id" Relationship="Reports.ReportsCashFlow" FromRole="Reports" ToRole="CashFlow" />
+          <NavigationProperty Name="Company" Relationship="Reports.ReportsCompany" FromRole="Reports" ToRole="Company" />
         </EntityType>
         <EntityType Name="Balance">
           <Key>
@@ -277,6 +314,41 @@
         <Association Name="ReportsCashFlow">
           <End Type="Reports.Reports" Role="Reports" Multiplicity="1" />
           <End Type="Reports.CashFlow" Role="CashFlow" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Double" Name="Id" Nullable="false" />
+          <Property Type="Double" Name="Column_B" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Shortcut" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="ShareNumbers" />
+          <Property Type="Double" Name="SharePrice" />
+          <Property Type="DateTime" Name="Date" Precision="3" />
+          <Property Type="String" Name="Description" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Column_I" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="Column_J" />
+          <Property Type="Double" Name="Column_K" />
+          <Property Type="Double" Name="Column_L" />
+          <Property Type="String" Name="Href" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PhoneNumber" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FullName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HeadAccount" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Profile" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HrefStatus" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="VoteNumbers" />
+          <Property Type="DateTime" Name="Date2" Precision="3" />
+          <Property Type="String" Name="Column_W" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Column_X" Precision="3" />
+          <Property Type="Double" Name="Volumen20" />
+          <NavigationProperty Name="Reports" Relationship="Reports.ReportsCompany" FromRole="Company" ToRole="Reports" />
+        </EntityType>
+        <Association Name="ReportsCompany">
+          <End Type="Reports.Reports" Role="Reports" Multiplicity="*" />
+          <End Type="Reports.Company" Role="Company" Multiplicity="1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -400,6 +472,37 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
+          <EntitySetMapping Name="Company">
+            <EntityTypeMapping TypeName="Reports.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="Volumen20" ColumnName="Volumen20" />
+                <ScalarProperty Name="Column_X" ColumnName="Column_X" />
+                <ScalarProperty Name="Column_W" ColumnName="Column_W" />
+                <ScalarProperty Name="Date2" ColumnName="Date2" />
+                <ScalarProperty Name="VoteNumbers" ColumnName="VoteNumbers" />
+                <ScalarProperty Name="HrefStatus" ColumnName="HrefStatus" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Profile" ColumnName="Profile" />
+                <ScalarProperty Name="HeadAccount" ColumnName="HeadAccount" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Href" ColumnName="Href" />
+                <ScalarProperty Name="Column_L" ColumnName="Column_L" />
+                <ScalarProperty Name="Column_K" ColumnName="Column_K" />
+                <ScalarProperty Name="Column_J" ColumnName="Column_J" />
+                <ScalarProperty Name="Column_I" ColumnName="Column_I" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SharePrice" ColumnName="SharePrice" />
+                <ScalarProperty Name="ShareNumbers" ColumnName="ShareNumbers" />
+                <ScalarProperty Name="Shortcut" ColumnName="Shortcut" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Column_B" ColumnName="Column_B" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -415,6 +518,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
       </DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->

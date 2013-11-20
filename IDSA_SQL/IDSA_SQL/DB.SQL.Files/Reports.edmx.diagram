@@ -5,13 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="952e8daf130d4039b3d08beb94574281" Name="Diagram1" ZoomLevel="100" >
-        <EntityTypeShape EntityType="Reports.Reports" Width="2.375" PointX="4" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Reports.Balance" Width="2.5" PointX="6.75" PointY="0.625" />
+        <EntityTypeShape EntityType="Reports.Reports" Width="2.375" PointX="9" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Reports.Balance" Width="2.5" PointX="3.5" PointY="0.5" />
         <AssociationConnector Association="Reports.ReportsBalance" />
-        <EntityTypeShape EntityType="Reports.IncomeStatment" Width="2.5" PointX="3.875" PointY="3.5" />
+        <EntityTypeShape EntityType="Reports.IncomeStatment" Width="2.5" PointX="6.25" PointY="0.5" />
         <AssociationConnector Association="Reports.ReportsIncomeStatment" />
-        <EntityTypeShape EntityType="Reports.CashFlow" Width="2.375" PointX="1.125" PointY="0.75" />
+        <EntityTypeShape EntityType="Reports.CashFlow" Width="2.375" PointX="0.5" PointY="0.5" />
         <AssociationConnector Association="Reports.ReportsCashFlow" />
+        <EntityTypeShape EntityType="Reports.Company" Width="1.875" PointX="11.75" PointY="0.5" />
+        <AssociationConnector Association="Reports.ReportsCompany" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
