@@ -19,6 +19,10 @@
             <End Role="CashFlowSet" EntitySet="CashFlowSet" />
             <End Role="ReportsSet" EntitySet="ReportsSet" />
           </AssociationSet>
+          <AssociationSet Name="FK_ReportsCompany" Association="Reports.Store.FK_ReportsCompany">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="ReportsSet" EntitySet="ReportsSet" />
+          </AssociationSet>
           <AssociationSet Name="FK_ReportsIncomeStatment" Association="Reports.Store.FK_ReportsIncomeStatment">
             <End Role="IncomeStatmentSet" EntitySet="IncomeStatmentSet" />
             <End Role="ReportsSet" EntitySet="ReportsSet" />
@@ -141,9 +145,10 @@
           <Property Name="Quarter" Type="smallint" Nullable="false" />
           <Property Name="FinancialStatmentDate" Type="datetime" Nullable="false" />
           <Property Name="FinancialReportReleaseDate" Type="datetime" Nullable="false" />
-          <Property Name="Balance_Id_Id" Type="int" Nullable="false" />
-          <Property Name="IncomeStatment_Id_Id" Type="int" Nullable="false" />
-          <Property Name="CashFlow_Id_Id" Type="int" Nullable="false" />
+          <Property Name="Balance_Id" Type="int" Nullable="false" />
+          <Property Name="IncomeStatment_Id" Type="int" Nullable="false" />
+          <Property Name="CashFlow_Id" Type="int" Nullable="false" />
+          <Property Name="Company_Id" Type="float" Nullable="false" />
         </EntityType>
         <Association Name="FK_ReportsBalance">
           <End Role="BalanceSet" Type="Reports.Store.BalanceSet" Multiplicity="1" />
@@ -153,7 +158,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ReportsSet">
-              <PropertyRef Name="Balance_Id_Id" />
+              <PropertyRef Name="Balance_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -165,7 +170,19 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ReportsSet">
-              <PropertyRef Name="CashFlow_Id_Id" />
+              <PropertyRef Name="CashFlow_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportsCompany">
+          <End Role="Company" Type="Reports.Store.Company" Multiplicity="1" />
+          <End Role="ReportsSet" Type="Reports.Store.ReportsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportsSet">
+              <PropertyRef Name="Company_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -177,7 +194,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ReportsSet">
-              <PropertyRef Name="IncomeStatment_Id_Id" />
+              <PropertyRef Name="IncomeStatment_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -217,9 +234,9 @@
           <Property Type="Int16" Name="Quarter" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Type="DateTime" Name="FinancialStatmentDate" Nullable="false" Precision="3" />
           <Property Type="DateTime" Name="FinancialReportReleaseDate" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Balance_Id" Relationship="Reports.ReportsBalance" FromRole="Reports" ToRole="Balance" />
-          <NavigationProperty Name="IncomeStatment_Id" Relationship="Reports.ReportsIncomeStatment" FromRole="Reports" ToRole="IncomeStatment" />
-          <NavigationProperty Name="CashFlow_Id" Relationship="Reports.ReportsCashFlow" FromRole="Reports" ToRole="CashFlow" />
+          <NavigationProperty Name="Balance" Relationship="Reports.ReportsBalance" FromRole="Reports" ToRole="Balance" />
+          <NavigationProperty Name="IncomeStatment" Relationship="Reports.ReportsIncomeStatment" FromRole="Reports" ToRole="IncomeStatment" />
+          <NavigationProperty Name="CashFlow" Relationship="Reports.ReportsCashFlow" FromRole="Reports" ToRole="CashFlow" />
           <NavigationProperty Name="Company" Relationship="Reports.ReportsCompany" FromRole="Reports" ToRole="Company" />
         </EntityType>
         <EntityType Name="Balance">
@@ -256,7 +273,7 @@
           <Property Type="Int64" Name="LoansAndAdvancesST" Nullable="false" />
           <Property Type="Int64" Name="OtherFinancialST" Nullable="false" />
           <Property Type="Int64" Name="OtherST" Nullable="false" />
-          <NavigationProperty Name="Reports_Id" Relationship="Reports.ReportsBalance" FromRole="Balance" ToRole="Reports" />
+          <NavigationProperty Name="Reports" Relationship="Reports.ReportsBalance" FromRole="Balance" ToRole="Reports" />
         </EntityType>
         <Association Name="ReportsBalance">
           <End Type="Reports.Reports" Role="Reports" Multiplicity="1" />
@@ -283,7 +300,7 @@
           <Property Type="Int64" Name="EarningsBeforeTaxes" Nullable="false" />
           <Property Type="Int64" Name="DiscountinuedOperations" Nullable="false" />
           <Property Type="Int64" Name="NetParentProfit" Nullable="false" />
-          <NavigationProperty Name="Reports_Id" Relationship="Reports.ReportsIncomeStatment" FromRole="IncomeStatment" ToRole="Reports" />
+          <NavigationProperty Name="Reports" Relationship="Reports.ReportsIncomeStatment" FromRole="IncomeStatment" ToRole="Reports" />
         </EntityType>
         <Association Name="ReportsIncomeStatment">
           <End Type="Reports.Reports" Role="Reports" Multiplicity="1" />
@@ -448,9 +465,40 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Company">
+      <EntityTypeMapping TypeName="IsTypeOf(Reports.Company)">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Column_B" ColumnName="Column_B" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Shortcut" ColumnName="Shortcut" />
+          <ScalarProperty Name="ShareNumbers" ColumnName="ShareNumbers" />
+          <ScalarProperty Name="SharePrice" ColumnName="SharePrice" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Column_I" ColumnName="Column_I" />
+          <ScalarProperty Name="Column_J" ColumnName="Column_J" />
+          <ScalarProperty Name="Column_K" ColumnName="Column_K" />
+          <ScalarProperty Name="Column_L" ColumnName="Column_L" />
+          <ScalarProperty Name="Href" ColumnName="Href" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="HeadAccount" ColumnName="HeadAccount" />
+          <ScalarProperty Name="Profile" ColumnName="Profile" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="HrefStatus" ColumnName="HrefStatus" />
+          <ScalarProperty Name="VoteNumbers" ColumnName="VoteNumbers" />
+          <ScalarProperty Name="Date2" ColumnName="Date2" />
+          <ScalarProperty Name="Column_W" ColumnName="Column_W" />
+          <ScalarProperty Name="Column_X" ColumnName="Column_X" />
+          <ScalarProperty Name="Volumen20" ColumnName="Volumen20" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="ReportsBalance" TypeName="Reports.ReportsBalance" StoreEntitySet="ReportsSet">
       <EndProperty Name="Balance">
-        <ScalarProperty Name="Id" ColumnName="Balance_Id_Id" />
+        <ScalarProperty Name="Id" ColumnName="Balance_Id" />
       </EndProperty>
       <EndProperty Name="Reports">
         <ScalarProperty Name="Id" ColumnName="Id" />
@@ -458,7 +506,7 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="ReportsIncomeStatment" TypeName="Reports.ReportsIncomeStatment" StoreEntitySet="ReportsSet">
       <EndProperty Name="IncomeStatment">
-        <ScalarProperty Name="Id" ColumnName="IncomeStatment_Id_Id" />
+        <ScalarProperty Name="Id" ColumnName="IncomeStatment_Id" />
       </EndProperty>
       <EndProperty Name="Reports">
         <ScalarProperty Name="Id" ColumnName="Id" />
@@ -466,43 +514,20 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="ReportsCashFlow" TypeName="Reports.ReportsCashFlow" StoreEntitySet="ReportsSet">
       <EndProperty Name="CashFlow">
-        <ScalarProperty Name="Id" ColumnName="CashFlow_Id_Id" />
+        <ScalarProperty Name="Id" ColumnName="CashFlow_Id" />
       </EndProperty>
       <EndProperty Name="Reports">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-          <EntitySetMapping Name="Company">
-            <EntityTypeMapping TypeName="Reports.Company">
-              <MappingFragment StoreEntitySet="Company">
-                <ScalarProperty Name="Volumen20" ColumnName="Volumen20" />
-                <ScalarProperty Name="Column_X" ColumnName="Column_X" />
-                <ScalarProperty Name="Column_W" ColumnName="Column_W" />
-                <ScalarProperty Name="Date2" ColumnName="Date2" />
-                <ScalarProperty Name="VoteNumbers" ColumnName="VoteNumbers" />
-                <ScalarProperty Name="HrefStatus" ColumnName="HrefStatus" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Profile" ColumnName="Profile" />
-                <ScalarProperty Name="HeadAccount" ColumnName="HeadAccount" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Href" ColumnName="Href" />
-                <ScalarProperty Name="Column_L" ColumnName="Column_L" />
-                <ScalarProperty Name="Column_K" ColumnName="Column_K" />
-                <ScalarProperty Name="Column_J" ColumnName="Column_J" />
-                <ScalarProperty Name="Column_I" ColumnName="Column_I" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="SharePrice" ColumnName="SharePrice" />
-                <ScalarProperty Name="ShareNumbers" ColumnName="ShareNumbers" />
-                <ScalarProperty Name="Shortcut" ColumnName="Shortcut" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Column_B" ColumnName="Column_B" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+    <AssociationSetMapping Name="ReportsCompany" TypeName="Reports.ReportsCompany" StoreEntitySet="ReportsSet">
+      <EndProperty Name="Company">
+        <ScalarProperty Name="Id" ColumnName="Company_Id" />
+      </EndProperty>
+      <EndProperty Name="Reports">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/19/2013 00:09:35
--- Generated from EDMX file: F:\GitRepoC#\IDSA_SQL\IDSA_SQL\IDSA_SQL\Reports.edmx
+-- Date Created: 11/22/2013 00:38:25
+-- Generated from EDMX file: F:\GitRepoC#\IDSA_SQL\IDSA_SQL\IDSA_SQL\DB.SQL.Files\Reports.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,38 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_ReportsBalance]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ReportsSet] DROP CONSTRAINT [FK_ReportsBalance];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ReportsIncomeStatment]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ReportsSet] DROP CONSTRAINT [FK_ReportsIncomeStatment];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ReportsCashFlow]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ReportsSet] DROP CONSTRAINT [FK_ReportsCashFlow];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ReportsCompany]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ReportsSet] DROP CONSTRAINT [FK_ReportsCompany];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[ReportsSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ReportsSet];
+GO
+IF OBJECT_ID(N'[dbo].[BalanceSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[BalanceSet];
+GO
+IF OBJECT_ID(N'[dbo].[IncomeStatmentSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[IncomeStatmentSet];
+GO
+IF OBJECT_ID(N'[dbo].[CashFlowSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CashFlowSet];
+GO
+IF OBJECT_ID(N'[dbo].[Company]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Company];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -34,9 +61,10 @@ CREATE TABLE [dbo].[ReportsSet] (
     [Quarter] smallint  NOT NULL,
     [FinancialStatmentDate] datetime  NOT NULL,
     [FinancialReportReleaseDate] datetime  NOT NULL,
-    [Balance_Id_Id] int  NOT NULL,
-    [IncomeStatment_Id_Id] int  NOT NULL,
-    [CashFlow_Id_Id] int  NOT NULL
+    [Balance_Id] int  NOT NULL,
+    [IncomeStatment_Id] int  NOT NULL,
+    [CashFlow_Id] int  NOT NULL,
+    [Company_Id] float  NOT NULL
 );
 GO
 
@@ -118,6 +146,36 @@ CREATE TABLE [dbo].[CashFlowSet] (
 );
 GO
 
+-- Creating table 'Company'
+CREATE TABLE [dbo].[Company] (
+    [Id] float  NOT NULL,
+    [Column_B] float  NULL,
+    [Name] nvarchar(255)  NOT NULL,
+    [Shortcut] nvarchar(255)  NOT NULL,
+    [ShareNumbers] float  NULL,
+    [SharePrice] float  NULL,
+    [Date] datetime  NULL,
+    [Description] nvarchar(500)  NULL,
+    [Column_I] nvarchar(255)  NULL,
+    [Column_J] float  NULL,
+    [Column_K] float  NULL,
+    [Column_L] float  NULL,
+    [Href] nvarchar(255)  NULL,
+    [PhoneNumber] nvarchar(255)  NULL,
+    [Email] nvarchar(255)  NULL,
+    [FullName] nvarchar(255)  NULL,
+    [HeadAccount] nvarchar(255)  NULL,
+    [Profile] nvarchar(255)  NULL,
+    [Address] nvarchar(255)  NULL,
+    [HrefStatus] nvarchar(255)  NULL,
+    [VoteNumbers] float  NULL,
+    [Date2] datetime  NULL,
+    [Column_W] nvarchar(500)  NULL,
+    [Column_X] datetime  NULL,
+    [Volumen20] float  NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -146,14 +204,20 @@ ADD CONSTRAINT [PK_CashFlowSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
+-- Creating primary key on [Id] in table 'Company'
+ALTER TABLE [dbo].[Company]
+ADD CONSTRAINT [PK_Company]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [Balance_Id_Id] in table 'ReportsSet'
+-- Creating foreign key on [Balance_Id] in table 'ReportsSet'
 ALTER TABLE [dbo].[ReportsSet]
 ADD CONSTRAINT [FK_ReportsBalance]
-    FOREIGN KEY ([Balance_Id_Id])
+    FOREIGN KEY ([Balance_Id])
     REFERENCES [dbo].[BalanceSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -161,13 +225,13 @@ ADD CONSTRAINT [FK_ReportsBalance]
 -- Creating non-clustered index for FOREIGN KEY 'FK_ReportsBalance'
 CREATE INDEX [IX_FK_ReportsBalance]
 ON [dbo].[ReportsSet]
-    ([Balance_Id_Id]);
+    ([Balance_Id]);
 GO
 
--- Creating foreign key on [IncomeStatment_Id_Id] in table 'ReportsSet'
+-- Creating foreign key on [IncomeStatment_Id] in table 'ReportsSet'
 ALTER TABLE [dbo].[ReportsSet]
 ADD CONSTRAINT [FK_ReportsIncomeStatment]
-    FOREIGN KEY ([IncomeStatment_Id_Id])
+    FOREIGN KEY ([IncomeStatment_Id])
     REFERENCES [dbo].[IncomeStatmentSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -175,13 +239,13 @@ ADD CONSTRAINT [FK_ReportsIncomeStatment]
 -- Creating non-clustered index for FOREIGN KEY 'FK_ReportsIncomeStatment'
 CREATE INDEX [IX_FK_ReportsIncomeStatment]
 ON [dbo].[ReportsSet]
-    ([IncomeStatment_Id_Id]);
+    ([IncomeStatment_Id]);
 GO
 
--- Creating foreign key on [CashFlow_Id_Id] in table 'ReportsSet'
+-- Creating foreign key on [CashFlow_Id] in table 'ReportsSet'
 ALTER TABLE [dbo].[ReportsSet]
 ADD CONSTRAINT [FK_ReportsCashFlow]
-    FOREIGN KEY ([CashFlow_Id_Id])
+    FOREIGN KEY ([CashFlow_Id])
     REFERENCES [dbo].[CashFlowSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -189,7 +253,21 @@ ADD CONSTRAINT [FK_ReportsCashFlow]
 -- Creating non-clustered index for FOREIGN KEY 'FK_ReportsCashFlow'
 CREATE INDEX [IX_FK_ReportsCashFlow]
 ON [dbo].[ReportsSet]
-    ([CashFlow_Id_Id]);
+    ([CashFlow_Id]);
+GO
+
+-- Creating foreign key on [Company_Id] in table 'ReportsSet'
+ALTER TABLE [dbo].[ReportsSet]
+ADD CONSTRAINT [FK_ReportsCompany]
+    FOREIGN KEY ([Company_Id])
+    REFERENCES [dbo].[Company]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ReportsCompany'
+CREATE INDEX [IX_FK_ReportsCompany]
+ON [dbo].[ReportsSet]
+    ([Company_Id]);
 GO
 
 -- --------------------------------------------------

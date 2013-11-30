@@ -45,6 +45,6 @@ namespace IDSA_SQL.DB.SQL.Files
         public long OtherFinancialST { get; set; }
         public long OtherST { get; set; }
     
-        public virtual Reports Reports_Id { get; set; }
+        public virtual Reports Reports { get; set; }
     }
 }

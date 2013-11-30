@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="952e8daf130d4039b3d08beb94574281" Name="Diagram1" ZoomLevel="100" >
-        <EntityTypeShape EntityType="Reports.Reports" Width="2.375" PointX="9" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Reports.Reports" Width="2.375" PointX="9.125" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Reports.Balance" Width="2.5" PointX="3.5" PointY="0.5" />
         <AssociationConnector Association="Reports.ReportsBalance" />
         <EntityTypeShape EntityType="Reports.IncomeStatment" Width="2.5" PointX="6.25" PointY="0.5" />

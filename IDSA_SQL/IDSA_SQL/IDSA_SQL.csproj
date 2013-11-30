@@ -61,38 +61,36 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DB.SQL.Files\Balance.cs">
-      <DependentUpon>Reports.tt</DependentUpon>
+      <DependentUpon>Idsa_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DB.SQL.Files\CashFlow.cs">
-      <DependentUpon>Reports.tt</DependentUpon>
+      <DependentUpon>Idsa_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB.SQL.Files\IncomeStatment.cs">
-      <DependentUpon>Reports.tt</DependentUpon>
+    <Compile Include="DB.SQL.Files\Company.cs">
+      <DependentUpon>Idsa_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB.SQL.Files\Reports.Context.cs">
+    <Compile Include="DB.SQL.Files\Idsa_Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Reports.Context.tt</DependentUpon>
+      <DependentUpon>Idsa_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB.SQL.Files\Idsa_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Idsa_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB.SQL.Files\IncomeStatment.cs">
+      <DependentUpon>Idsa_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DB.SQL.Files\Reports.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Reports.tt</DependentUpon>
+      <DependentUpon>Idsa_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DB.SQL.Files\Reports.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reports.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="DB.SQL.Files\ReportsGenerationModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReportsGenerationModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB.SQL.Files\ReportsGenerationModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReportsGenerationModel.tt</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +123,16 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="DB.SQL.Files\Idsa_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Idsa_Model.Context.cs</LastGenOutput>
+      <DependentUpon>Reports.edmx</DependentUpon>
+    </None>
+    <None Include="DB.SQL.Files\Idsa_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Idsa_Model.cs</LastGenOutput>
+      <DependentUpon>Reports.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -135,11 +143,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Reports.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DB.SQL.Files\Reports.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Reports.edmx</DependentUpon>
-      <LastGenOutput>Reports.Context.cs</LastGenOutput>
-    </None>
     <None Include="DB.SQL.Files\Reports.edmx.diagram">
       <DependentUpon>Reports.edmx</DependentUpon>
     </None>
@@ -147,16 +150,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Reports.edmx</DependentUpon>
       <LastGenOutput>Reports.cs</LastGenOutput>
-    </None>
-    <None Include="DB.SQL.Files\ReportsGenerationModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ReportsGenerationModel.Context.cs</LastGenOutput>
-      <DependentUpon>Reports.edmx</DependentUpon>
-    </None>
-    <None Include="DB.SQL.Files\ReportsGenerationModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ReportsGenerationModel.cs</LastGenOutput>
-      <DependentUpon>Reports.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

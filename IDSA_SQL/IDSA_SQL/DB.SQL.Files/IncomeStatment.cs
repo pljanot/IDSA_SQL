@@ -32,6 +32,6 @@ namespace IDSA_SQL.DB.SQL.Files
         public long DiscountinuedOperations { get; set; }
         public long NetParentProfit { get; set; }
     
-        public virtual Reports Reports_Id { get; set; }
+        public virtual Reports Reports { get; set; }
     }
 }

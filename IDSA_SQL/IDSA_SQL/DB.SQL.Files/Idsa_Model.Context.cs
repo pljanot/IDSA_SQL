@@ -29,5 +29,6 @@ namespace IDSA_SQL.DB.SQL.Files
         public DbSet<Balance> BalanceSet { get; set; }
         public DbSet<IncomeStatment> IncomeStatmentSet { get; set; }
         public DbSet<CashFlow> CashFlowSet { get; set; }
+        public DbSet<Company> Company { get; set; }
     }
 }

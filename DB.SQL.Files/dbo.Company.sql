@@ -31,6 +31,4 @@
 GO
 CREATE NONCLUSTERED INDEX [IX_Company]
     ON [dbo].[Company]([Id] ASC);
-
-
 GO
