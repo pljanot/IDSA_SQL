@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using IDSA_SQL.DB.SQL.Files;
 
 namespace IDSA_SQL
 {
@@ -20,9 +21,13 @@ namespace IDSA_SQL
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<Company> companyResource { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            var model = new ReportsContainer();
+            companyResource = model.Company.ToList();
+
         }
     }
 }

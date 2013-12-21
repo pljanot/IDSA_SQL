@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
@@ -61,13 +64,23 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DB.SQL.Files\Balance.cs">
-      <DependentUpon>Idsa_Model.tt</DependentUpon>
+      <DependentUpon>IdsaDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="DB.SQL.Files\CashFlow.cs">
-      <DependentUpon>Idsa_Model.tt</DependentUpon>
+      <DependentUpon>IdsaDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="DB.SQL.Files\Company.cs">
-      <DependentUpon>Idsa_Model.tt</DependentUpon>
+      <DependentUpon>IdsaDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB.SQL.Files\IdsaDataBase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IdsaDataBase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB.SQL.Files\IdsaDataBase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IdsaDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="DB.SQL.Files\Idsa_Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -80,12 +93,12 @@
       <DependentUpon>Idsa_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DB.SQL.Files\IncomeStatment.cs">
-      <DependentUpon>Idsa_Model.tt</DependentUpon>
+      <DependentUpon>IdsaDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="DB.SQL.Files\Reports.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Idsa_Model.tt</DependentUpon>
+      <DependentUpon>IdsaDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="DB.SQL.Files\Reports.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -123,6 +136,16 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="DB.SQL.Files\IdsaDataBase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IdsaDataBase.Context.cs</LastGenOutput>
+      <DependentUpon>Reports.edmx</DependentUpon>
+    </None>
+    <None Include="DB.SQL.Files\IdsaDataBase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IdsaDataBase.cs</LastGenOutput>
+      <DependentUpon>Reports.edmx</DependentUpon>
+    </None>
     <None Include="DB.SQL.Files\Idsa_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Idsa_Model.Context.cs</LastGenOutput>
