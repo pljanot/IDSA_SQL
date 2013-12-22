@@ -16,7 +16,7 @@ namespace IDSA_SQL.DB.SQL.Files
     public partial class ReportsContainer : DbContext
     {
         public ReportsContainer()
-            : base("name=IdsaTestDB")
+            : base("name=ReportsContainer")
         {
         }
     

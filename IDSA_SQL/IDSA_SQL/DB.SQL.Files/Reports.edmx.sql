@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/22/2013 00:38:25
+-- Date Created: 12/22/2013 16:33:03
 -- Generated from EDMX file: F:\GitRepoC#\IDSA_SQL\IDSA_SQL\IDSA_SQL\DB.SQL.Files\Reports.edmx
 -- --------------------------------------------------
 
@@ -64,7 +64,7 @@ CREATE TABLE [dbo].[ReportsSet] (
     [Balance_Id] int  NOT NULL,
     [IncomeStatment_Id] int  NOT NULL,
     [CashFlow_Id] int  NOT NULL,
-    [Company_Id] float  NOT NULL
+    [Company_Id] int  NOT NULL
 );
 GO
 
@@ -148,18 +148,18 @@ GO
 
 -- Creating table 'Company'
 CREATE TABLE [dbo].[Company] (
-    [Id] float  NOT NULL,
-    [Column_B] float  NULL,
+    [Id] int  NOT NULL,
+    [Column_B] decimal(18,0)  NULL,
     [Name] nvarchar(255)  NOT NULL,
     [Shortcut] nvarchar(255)  NOT NULL,
-    [ShareNumbers] float  NULL,
-    [SharePrice] float  NULL,
+    [ShareNumbers] bigint  NULL,
+    [SharePrice] decimal(18,0)  NULL,
     [Date] datetime  NULL,
-    [Description] nvarchar(500)  NULL,
+    [Description] nvarchar(max)  NULL,
     [Column_I] nvarchar(255)  NULL,
-    [Column_J] float  NULL,
-    [Column_K] float  NULL,
-    [Column_L] float  NULL,
+    [Column_J] bigint  NULL,
+    [Column_K] bigint  NULL,
+    [Column_L] bigint  NULL,
     [Href] nvarchar(255)  NULL,
     [PhoneNumber] nvarchar(255)  NULL,
     [Email] nvarchar(255)  NULL,
@@ -168,11 +168,11 @@ CREATE TABLE [dbo].[Company] (
     [Profile] nvarchar(255)  NULL,
     [Address] nvarchar(255)  NULL,
     [HrefStatus] nvarchar(255)  NULL,
-    [VoteNumbers] float  NULL,
+    [VoteNumbers] bigint  NULL,
     [Date2] datetime  NULL,
-    [Column_W] nvarchar(500)  NULL,
+    [Column_W] nvarchar(max)  NULL,
     [Column_X] datetime  NULL,
-    [Volumen20] float  NULL
+    [Volumen20] bigint  NULL
 );
 GO
 

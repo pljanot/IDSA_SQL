@@ -19,18 +19,18 @@ namespace IDSA_SQL.DB.SQL.Files
             this.Reports = new HashSet<Reports>();
         }
     
-        public double Id { get; set; }
-        public Nullable<double> Column_B { get; set; }
+        public int Id { get; set; }
+        public Nullable<decimal> Column_B { get; set; }
         public string Name { get; set; }
         public string Shortcut { get; set; }
-        public Nullable<double> ShareNumbers { get; set; }
-        public Nullable<double> SharePrice { get; set; }
+        public Nullable<long> ShareNumbers { get; set; }
+        public Nullable<decimal> SharePrice { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public string Description { get; set; }
         public string Column_I { get; set; }
-        public Nullable<double> Column_J { get; set; }
-        public Nullable<double> Column_K { get; set; }
-        public Nullable<double> Column_L { get; set; }
+        public Nullable<long> Column_J { get; set; }
+        public Nullable<long> Column_K { get; set; }
+        public Nullable<long> Column_L { get; set; }
         public string Href { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
@@ -39,11 +39,11 @@ namespace IDSA_SQL.DB.SQL.Files
         public string Profile { get; set; }
         public string Address { get; set; }
         public string HrefStatus { get; set; }
-        public Nullable<double> VoteNumbers { get; set; }
+        public Nullable<long> VoteNumbers { get; set; }
         public Nullable<System.DateTime> Date2 { get; set; }
         public string Column_W { get; set; }
         public Nullable<System.DateTime> Column_X { get; set; }
-        public Nullable<double> Volumen20 { get; set; }
+        public Nullable<long> Volumen20 { get; set; }
     
         public virtual ICollection<Reports> Reports { get; set; }
     }
