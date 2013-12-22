@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,12 +22,12 @@ namespace IDSA_SQL
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<Company> companyResource { get; set; }
+        public ObservableCollection<Company> companyResource { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             var model = new ReportsContainer();
-            companyResource = model.Company.ToList();
+            companyResource = new ObservableCollection<Company>(model.Company);
 
         }
     }

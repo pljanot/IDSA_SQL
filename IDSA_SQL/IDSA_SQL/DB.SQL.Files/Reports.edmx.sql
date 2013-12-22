@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 12/22/2013 16:33:03
+-- Date Created: 12/22/2013 16:49:52
 -- Generated from EDMX file: F:\GitRepoC#\IDSA_SQL\IDSA_SQL\IDSA_SQL\DB.SQL.Files\Reports.edmx
 -- --------------------------------------------------
 
@@ -172,7 +172,7 @@ CREATE TABLE [dbo].[Company] (
     [Date2] datetime  NULL,
     [Column_W] nvarchar(max)  NULL,
     [Column_X] datetime  NULL,
-    [Volumen20] bigint  NULL
+    [Volumen20] float  NULL
 );
 GO
 

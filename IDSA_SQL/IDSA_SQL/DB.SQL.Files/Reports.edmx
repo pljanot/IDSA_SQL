@@ -148,7 +148,7 @@
     <Property Name="Date2" Type="datetime" Nullable="true" />
     <Property Name="Column_W" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Column_X" Type="datetime" Nullable="true" />
-    <Property Name="Volumen20" Type="bigint" Nullable="true" />
+    <Property Name="Volumen20" Type="float" Nullable="true" />
   </EntityType>
   <Association Name="ReportsBalance">
     <End Role="Reports" Type="Reports.Store.ReportsSet" Multiplicity="*" />

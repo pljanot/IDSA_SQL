@@ -43,7 +43,7 @@ namespace IDSA_SQL.DB.SQL.Files
         public Nullable<System.DateTime> Date2 { get; set; }
         public string Column_W { get; set; }
         public Nullable<System.DateTime> Column_X { get; set; }
-        public Nullable<long> Volumen20 { get; set; }
+        public Nullable<double> Volumen20 { get; set; }
     
         public virtual ICollection<Reports> Reports { get; set; }
     }

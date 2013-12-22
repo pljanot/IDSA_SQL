@@ -64,41 +64,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DB.SQL.Files\Balance.cs">
-      <DependentUpon>IdsaDataBase.tt</DependentUpon>
+      <DependentUpon>ReportsContainerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DB.SQL.Files\CashFlow.cs">
-      <DependentUpon>IdsaDataBase.tt</DependentUpon>
+      <DependentUpon>ReportsContainerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DB.SQL.Files\Company.cs">
-      <DependentUpon>IdsaDataBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB.SQL.Files\IdsaDataBase.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IdsaDataBase.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB.SQL.Files\IdsaDataBase.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IdsaDataBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB.SQL.Files\Idsa_Model.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Idsa_Model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB.SQL.Files\Idsa_Model.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Idsa_Model.tt</DependentUpon>
+      <DependentUpon>ReportsContainerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DB.SQL.Files\IncomeStatment.cs">
-      <DependentUpon>IdsaDataBase.tt</DependentUpon>
+      <DependentUpon>ReportsContainerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DB.SQL.Files\Reports.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IdsaDataBase.tt</DependentUpon>
+      <DependentUpon>ReportsContainerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DB.SQL.Files\Reports.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -112,6 +90,16 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DB.SQL.Files\ReportsContainerModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportsContainerModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB.SQL.Files\ReportsContainerModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportsContainerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -136,24 +124,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="DB.SQL.Files\IdsaDataBase.Context.tt">
+    <None Include="DB.SQL.Files\ReportsContainerModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IdsaDataBase.Context.cs</LastGenOutput>
+      <LastGenOutput>ReportsContainerModel.Context.cs</LastGenOutput>
       <DependentUpon>Reports.edmx</DependentUpon>
     </None>
-    <None Include="DB.SQL.Files\IdsaDataBase.tt">
+    <None Include="DB.SQL.Files\ReportsContainerModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IdsaDataBase.cs</LastGenOutput>
-      <DependentUpon>Reports.edmx</DependentUpon>
-    </None>
-    <None Include="DB.SQL.Files\Idsa_Model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Idsa_Model.Context.cs</LastGenOutput>
-      <DependentUpon>Reports.edmx</DependentUpon>
-    </None>
-    <None Include="DB.SQL.Files\Idsa_Model.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Idsa_Model.cs</LastGenOutput>
+      <LastGenOutput>ReportsContainerModel.cs</LastGenOutput>
       <DependentUpon>Reports.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -178,12 +156,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="obj\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DB.SQL.Files\Reports.edmx.sql" />
+    <Content Include="DB.SQL.Files\Reports.edmx.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB.SQL.Files\Company_Schema_Data.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

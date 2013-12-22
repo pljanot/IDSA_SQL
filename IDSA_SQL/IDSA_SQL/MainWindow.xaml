@@ -4,6 +4,7 @@
         Title="MainWindow" Height="350" Width="525">
     <DataGrid HorizontalAlignment="Left" Height="320"
               VerticalAlignment="Top" Width="517"
+              Name="reportsGridContainer"
               ItemsSource="{Binding companyResource}"
               />
 </Window>
