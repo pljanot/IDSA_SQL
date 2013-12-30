@@ -2,9 +2,12 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
-    <DataGrid HorizontalAlignment="Left" Height="320"
-              VerticalAlignment="Top" Width="517"
-              Name="reportsGridContainer"
-              ItemsSource="{Binding companyResource}"
-              />
+    <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <DataGrid HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Name="reportsGridContainer"
+                  ItemsSource="{Binding companyResource}"
+                  DockPanel.Dock="Bottom,Left,Right,Top"
+                  />
+    </DockPanel>
 </Window>

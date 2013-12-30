@@ -28,7 +28,7 @@ namespace IDSA_SQL
             InitializeComponent();
             var model = new ReportsContainer();
             companyResource = new ObservableCollection<Company>(model.Company);
-
+            reportsGridContainer.ItemsSource  = companyResource;
         }
     }
 }

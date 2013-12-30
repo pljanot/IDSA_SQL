@@ -19,6 +19,11 @@ namespace IDSA_SQL.DB.SQL.Files
             : base("name=IdsaTestDB")
         {
         }
+
+        public ReportsContainer(String connectionString) : base(connectionString) 
+        { 
+        }
+
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
